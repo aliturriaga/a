@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alonso Iturriaga</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body>
+    <main>
+        <h1>Alonso Iturriaga</h1>
+        <h2>Sobre mi</h2>
+        <p>Mi nombre es Alonso Iturriaga Escudero, estudiante de tercer año de Ingeniería Civil Informática ingresé a la Universidad Adolfo Ibañez el año 2021, tengo 21 años y tengo 3 hermanos.</p>
+
+        <div class="section">
+            <h3>Galería de Fotos</h3>
+            <div class="fotos">
+                <div class="foto" id="foto1">
+                    <img src="1.jpg" alt="Imagen 1" style="width:200px;" onclick="showLightbox('1.jpg', 'Mi perrita')">
+                </div>
+                <div class="foto" id="foto2">
+                    <img src="2.jpg" alt="Imagen 2" style="width:200px;" onclick="showLightbox('2.jpg', 'Mis 3 hermanos')">
+                </div>
+                <div class="foto" id="foto3">
+                    <img src="3.jpg" alt="Imagen 3" style="width:200px;" onclick="showLightbox('3.jpg', 'Mi equipo La masturbanda')">
+                </div>
+                <div class="foto" id="foto4">
+                    <img src="4.jpg" alt="Imagen 4" style="width:200px;" onclick="showLightbox('4.jpg', 'Mi polola')">
+                </div>
+                <div class="foto" id="foto5">
+                    <img src="5.jpg" alt="Imagen 5" style="width:200px;" onclick="showLightbox('5.jpg', 'Una foto con DrefQuila')">
+                </div>
+                <div class="foto" id="foto6">
+                    <img src="6.jpg" alt="Imagen 6" style="width:200px;" onclick="showLightbox('6.jpg', 'Una foto en halloween con cara de idiota')">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Formulario de Contacto</h3>
+            <form class="contact-form" id="contact-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+            <p class="success-message" id="success-message"></p>
+        </div>
+
+<div class="section">
+    <h3>Información Sobre Mi</h3>
+    <div class="info-row">
+        <div class="info-item">
+            <img src="7.png" alt="Imagen Diablo" style="max-width: 100%; height: auto;">
+            <p>Mi música favorita es el trap argentino, los artistas que mas escucho son Ysy A, Khea y Duki.</p>
+        </div>
+        <div class="info-item">
+            <img src="8.jpg" alt="Imagen Alexis Sánchez" style="max-width: 100%; height: auto;">
+            <p>Me gusta jugar al fútbol desde pequeño, juego de delantero y hago goles, al igual que mi jugador favorito el goat, Alexis Sánchez.</p>
+        </div>
+        <div class="info-item">
+            <img src="9.jpg" alt="Imagen Rocket League" style="max-width: 100%; height: auto;">
+            <p>Disfruto jugar en el pc, principalmente Rocket League de manera competitiva y casual, pero también juego otros juegos como Forza, Gta, Valorant.</p>
+        </div>
+    </div>
+</div>
+<h3>Sección Calculos Matemáticos</h3>
+<div class="math-section">
+    <h3>Calcular diferencia entre 2 números</h3>
+    <div class="math-input">
+        <label for="numero1">Número 1:</label>
+        <input type="number" id="numero1" required>
+    </div>
+    <div class="math-input">
+        <label for="numero2">Número 2:</label>
+        <input type="number" id="numero2" required>
+    </div>
+    <button onclick="realizarCalculo1()">Calcular</button>
+    <p class="math-result" id="resultado1"></p>
+</div>
+
+<div class="math-section">
+    <h3>Calcular precio total</h3>
+    <div class="math-input">
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" required>
+    </div>
+    <div class="math-input">
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" required>
+    </div>
+    <button onclick="realizarCalculo2()">Calcular</button>
+    <p class="math-result" id="resultado2"></p>
+</div>
+
+    </main>
+    <footer> 
+        <p>Esa sería una breve lista sobre los pasatiempos que más me gusta realizar.</p>
+        <p>Muchas gracias por su atención</p>
+    </footer>
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="Imagen Ampliada">
+            <p id="lightbox-description"></p>
+        </div>
+    </div>
+
+
+    <script>
+        function showLightbox(imageSrc, description) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxDescription = document.getElementById('lightbox-description');
+
+            lightboxImage.src = imageSrc;
+            lightboxDescription.innerText = description;
+
+            lightbox.style.display = 'flex';
+
+            lightbox.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+            });
+        }
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            document.getElementById('success-message').innerText = 'Formulario enviado con éxito';
+        });
+
+        function realizarCalculo1() {
+            const numero1 = parseFloat(document.getElementById('numero1').value);
+            const numero2 = parseFloat(document.getElementById('numero2').value);
+
+            if (!isNaN(numero1) && !isNaN(numero2)) {
+                const resultado1 = Math.abs(numero1 - numero2);
+                document.getElementById('resultado1').textContent = `La diferencia en valor absoluto entre ${numero1} y ${numero2} es: ${resultado1}`;
+            } else {
+                document.getElementById('resultado1').textContent = 'Ingresa números válidos';
+            }
+        }
+
+        
+        function realizarCalculo2() {
+            const precio = parseFloat(document.getElementById('precio').value);
+            const cantidad = parseFloat(document.getElementById('cantidad').value);
+
+            if (!isNaN(precio) && !isNaN(cantidad)) {
+                const resultado2 = precio * cantidad;
+                document.getElementById('resultado2').textContent = `El costo total de comprar ${cantidad} unidades a ${precio} cada una es: ${resultado2}`;
+            } else {
+                document.getElementById('resultado2').textContent = 'Ingresa números válidos';
+            }
+        }
+    </script>
+</body>
+</html>
